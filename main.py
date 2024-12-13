@@ -1,4 +1,4 @@
-from date import find_dates_in_text
+from date import find_dates_in_text, read_file
 
 def main_menu():
     while True:
@@ -15,10 +15,25 @@ def main_menu():
             dates = find_dates_in_text(text)
             print("Найденные корректные даты:", dates)
 
-
-
         elif choice == "2":
-            pass
+            file_path = input("Введите путь к файлу: ").strip()
+            try:
+                text = read_file(file_path)
+            except FileNotFoundError:
+                print(f"Файл {file_path} не найден.")
+                continue
+            dates = find_dates_in_text(text)
+            if dates:
+                print("Найденные корректные даты:")
+                for date in dates:
+                    print(date)
+            else:
+                print("Корректные даты не найдены.")
+
+
+
+
+
         elif choice == "3":
             pass
         elif choice == "0":

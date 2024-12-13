@@ -18,3 +18,8 @@ def find_dates_in_text(text):
     # Фильтрация только корректных дат
     valid_dates = [date for date in potential_dates if is_valid_date(date)]
     return valid_dates
+
+
+def read_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
