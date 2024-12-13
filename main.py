@@ -1,4 +1,5 @@
-from date import find_dates_in_text, read_file
+from date import find_dates_in_text, read_file, fetch_url_content
+import requests
 
 def main_menu():
     while True:
@@ -30,12 +31,22 @@ def main_menu():
             else:
                 print("Корректные даты не найдены.")
 
-
-
-
-
         elif choice == "3":
-            pass
+            url = input("Введите URL: ").strip()
+            try:
+                text = fetch_url_content(url)
+            except requests.RequestException as e:
+                print(f"Ошибка при загрузке URL: {e}")
+                continue
+
+            dates = find_dates_in_text(text)
+            if dates:
+                print("Найденные корректные даты:")
+                for date in dates:
+                    print(date)
+            else:
+                print("Корректные даты не найдены.")
+
         elif choice == "0":
             print("Завершение работы программы.")
             return 0
