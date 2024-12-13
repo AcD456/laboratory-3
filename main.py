@@ -1,4 +1,4 @@
-
+from date import find_dates_in_text
 
 def main_menu():
     while True:
@@ -11,7 +11,12 @@ def main_menu():
         choice = input("Введите номер варианта: ")
 
         if choice == "1":
-            pass
+            text = input("Введите текст для поиска дат: ")
+            dates = find_dates_in_text(text)
+            print("Найденные корректные даты:", dates)
+
+
+
         elif choice == "2":
             pass
         elif choice == "3":
